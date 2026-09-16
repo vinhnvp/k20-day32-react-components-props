@@ -33,19 +33,23 @@ function App() {
   ];
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold">Users List</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 xl:max-w-[1600px] gap-4 mt-4">
-        {usersList.map((user, index) => (
-          <UserProfileCard
-            key={index}
-            avatar={user.avatar}
-            fullName={user.fullName}
-            jobTitle={user.jobTitle}
-            isOnline={user.isOnline}
-            skills={user.skills}
-          />
-        ))}
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-200 px-4 py-10">
+      <div className="mx-auto max-w-7xl">
+        <header className="mb-10 text-center">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-800">Danh sách thành viên</h1>
+        </header>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
+          {usersList.map((user, index) => (
+            <UserProfileCard
+              key={index}
+              avatar={user.avatar}
+              fullName={user.fullName}
+              jobTitle={user.jobTitle}
+              isOnline={user.isOnline}
+              skills={user.skills}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
