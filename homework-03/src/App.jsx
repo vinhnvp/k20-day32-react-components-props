@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import FaqList from './components/FaqList'
 
 function App() {
+  const [selectedFaqIds, setSelectedFaqIds] = useState([])
+
   const faqData = [
     {
       id: 1,
@@ -47,13 +50,18 @@ function App() {
   ]
 
   const onSelectFaq = (id) => {
-    return id
+    setSelectedFaqIds((current) =>
+      current.includes(id) ? current.filter((faqId) => faqId !== id) : [...current, id]
+    )
   }
 
   return (
-    <>
-      <FaqList dataList={faqData} onSelectFaq={onSelectFaq}/>
-    </>
+    <div className="min-h-screen bg-slate-50 px-4 py-10">
+      <div className="mx-auto max-w-3xl">
+        <h1 className="mb-8 text-center text-3xl font-extrabold tracking-tight text-slate-800">Câu hỏi thường gặp</h1>
+        <FaqList dataList={faqData} selectedFaqIds={selectedFaqIds} onSelectFaq={onSelectFaq} />
+      </div>
+    </div>
   )
 }
 

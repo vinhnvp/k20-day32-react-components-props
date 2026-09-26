@@ -1,11 +1,18 @@
-import FaqItem from "./FaqItem"
+import FaqItem from './FaqItem'
 
-export default function FaqList ({dataList, onSelectFaq}) {
+export default function FaqList({ dataList, selectedFaqIds, onSelectFaq }) {
     return (
-        <div className="grid grid-cols-1 gap-2">
-            {dataList.map((data) => (
-                <FaqItem key={data.id} data={data} onSelectFaq={onSelectFaq}/>
-            ))}
-        </div>
+        dataList.length > 0 && (
+            <div className="flex flex-col gap-4">
+                {dataList.map((data) => (
+                    <FaqItem
+                        key={data.id}
+                        data={data}
+                        isExpanded={selectedFaqIds.includes(data.id)}
+                        onSelectFaq={onSelectFaq}
+                    />
+                ))}
+            </div>
+        )
     )
 }
